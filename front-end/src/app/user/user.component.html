@@ -1,0 +1,105 @@
+<div class="row d-flex justify-content-center">
+
+    <div class="col-11 shadow-lg p-3 mb-5 bg-body rounded">
+        <p class="display-5">Tus productos</p>
+
+        <div class="d-flex p-3">
+            <div class="col-4">
+                <div class="row">
+                    <div class="card text-white bg-dark mb-3" style="max-width: 90%;">
+                        <div class="card-header">Tipo de cuenta: {{cuenta.tipo_cuenta}}</div>
+                        <div class="card-body">
+                            <h6 class="card-text">Numero de cuenta:</h6>
+                            <h5 class="card-title">{{cuenta.numero_cuenta}}</h5>
+                            <h6 class="card-text">Saldo:</h6>
+                            <h5 class="card-title">$ {{cuenta.saldo}}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-8">
+                <div class="card text-white bg-primary mb-3" style="max-width: 100%;">
+                    <div class="card-header">{{tipodoccliente_storag}} {{numerodoccliente_storag}}</div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{nombrecliente_storag}} {{apellidocliente_storag}}</h5>
+                        <h6 class="card-text">{{emailcliente_storag}}</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+    <div class="col-11 shadow-lg p-3 mb-5 bg-body rounded">
+        <p class="display-5">Consigna y Retira</p>
+        <!-- <div class="d-grid gap-2">
+            <input type="number" placeholder="Introduzca el monto" #saldo="ngModel" [(ngModel)]="cuenta.saldo" name="saldo" />
+            <div class="col-5">
+                <button type="submit" class="btn btn-primary">Cosignacion</button>
+                <button type="submit" class="btn btn btn-success">Retiro</button>
+            </div>
+
+        </div> -->
+        <div class="input-group">
+            <input [(ngModel)]="saldo" name="saldo" type="number" class="form-control" placeholder="Introduzca el monto" aria-label="Introduzca el monto">
+            <button class="btn btn-outline-primary" type="button" (click)="Consignacion()">Consignación</button>
+            <button class="btn btn-outline-success" type="button" (click)="Retiro()">Retiro</button>
+        </div>
+    </div>
+
+    <div class="col-11 shadow-lg p-3 mb-5 bg-body rounded">
+        <p class="display-5">Transfiere</p>
+
+        <div class="input-group mb-3">
+
+            <input type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            <span class="input-group-text" id="inputGroup-sizing-default">Número de cuenta</span>
+        </div>
+        <div class="input-group mb-3">
+
+            <input type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            <span class="input-group-text" id="inputGroup-sizing-default">Monto a transferir</span>
+        </div>
+
+        <div class="d-flex justify-content-end">
+
+            <button class="btn btn-outline-success" type="button">Transfiere</button>
+        </div>
+    </div>
+
+</div>
+
+<!-- <div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h3>Clientes</h3>
+        </div>
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Documento</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td>{{clientes?.nombre}}</td>
+                        <td>{{clientes?.apellido}}</td>
+                        <td>{{clientes?.num_documento}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div> -->
+
+<div class="nombreesquinainf">
+    Bienvenido {{nombrecliente_storag}}
+</div>

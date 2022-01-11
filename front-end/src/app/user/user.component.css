@@ -1,0 +1,9 @@
+.nombreesquinainf {
+    position: fixed;
+    right: 10px;
+    top: 20px;
+    z-index: 999999;
+    color: #007bff;
+    font-size: large;
+    font-weight: 800;
+}
