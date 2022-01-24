@@ -19,22 +19,25 @@ export class LoginComponent {
 
   login() {
     console.log(this.user.email);
-    
+    if(this.user.email != ""){
     this.service.login(this.user.email, this.user.password).subscribe( data => {
       console.log("data: ", data);
       if (!data) {
-        
+        alert("Porfavor ingresar correo y contraseña validos");
       }else{
         
         sessionStorage.setItem('nombrecliente', data.nombre);
         sessionStorage.setItem('apellidocliente', data.apellido);
         sessionStorage.setItem('emailcliente', data.email);
-        sessionStorage.setItem('numerodoccliente', data.num_documento);
-        sessionStorage.setItem('tipodoccliente', data.tipo_documento);
+        sessionStorage.setItem('numerodoccliente', data.numDocumento);
+        sessionStorage.setItem('tipodoccliente', data.tipoDocumento);
         
-        this.router.navigate(["user"])
+        this.router.navigate(["user"]);
       }
   });
 }
-
+  }
+Home(){
+  this.router.navigate([""])
+}
 }

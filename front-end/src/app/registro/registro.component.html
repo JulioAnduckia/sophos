@@ -32,15 +32,15 @@
             <!--------espacio tipo_documento-->
             <!---->
             <label><b>Tipo de identificación</b></label><br>
-            <select  [(ngModel)]="register.tipo_documento" name="tipo_documento" class="form-control">
+            <select  [(ngModel)]="register.tipoDocumento" name="tipo_documento" class="form-control">
             <option>Seleccionar</option>
             <option value="CC">Cédula de ciudadanía (CC)</option>
             <option value="CE">Cédula de extranjería (CE)</option>
             <option value="TP">Tarjeta pasaporte (TP)</option>
             
           </select>
-            <label for="num_identificacion"><b>Número de documento</b></label>
-            <input type="number" #num_identificacion="ngModel" [(ngModel)]="register.num_documento" [(ngModel)]="cuenta.num_documento" placeholder="Introduzca su número de documento " name="num_identificacion" min="1000000" class="form-control" required [ngClass]="{'is-valid': !num_identificacion.invalid, 'is-invalid': num_identificacion.invalid}"
+            <label for="num_identificacion"><b>Número de identificación</b></label>
+            <input type="number" #num_identificacion="ngModel" [(ngModel)]="register.numDocumento" [(ngModel)]="cuenta.numDocumento" placeholder="Introduzca su número de identificación " name="num_identificacion" min="1000000" class="form-control" required [ngClass]="{'is-valid': !num_identificacion.invalid, 'is-invalid': num_identificacion.invalid}"
             />
 
             <div class="invalid-feedback" *ngIf="num_identificacion.invalid && (num_identificacion.dirty || num_identificacion.touched)">
@@ -53,7 +53,7 @@
             </div>
             <!---->
             <label for="fecha_nacimiento"><b>Fecha de nacimiento</b></label>
-            <input type="date" #fecha_nacimiento="ngModel" [(ngModel)]="register.fecha_nacimiento" placeholder="Introduzca su fecha de nacimiento " name="fecha_nacimiento" max="2007-12-31" class="form-control" required [ngClass]="{'is-valid': !fecha_nacimiento.invalid, 'is-invalid': fecha_nacimiento.invalid}"
+            <input type="date" #fecha_nacimiento="ngModel" [(ngModel)]="register.fechaNacimiento" placeholder="Introduzca su fecha de nacimiento " name="fecha_nacimiento" max="2007-12-31" class="form-control" required [ngClass]="{'is-valid': !fecha_nacimiento.invalid, 'is-invalid': fecha_nacimiento.invalid}"
             />
 
             <div class="invalid-feedback" *ngIf="fecha_nacimiento.invalid && (fecha_nacimiento.dirty || fecha_nacimiento.touched)">
@@ -67,13 +67,13 @@
             <!---->
             <label><b>Tipo de cuenta a crear</b></label><br>
             <div class="form-check">
-                <input class="form-check-input" type="radio" #tipo_cuenta="ngModel" [(ngModel)]="cuenta.tipo_cuenta" name="tipo_cuenta" value=Ahorros required>
+                <input class="form-check-input" type="radio" #tipo_cuenta="ngModel" [(ngModel)]="cuenta.tipoCuenta" name="tipo_cuenta" value=Ahorros required>
                 <label class="form-check-label" for="tipo_cuenta">
                 Cuenta de ahorros
             </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="tipo_cuenta" value=Corriente #tipo_cuenta="ngModel" [(ngModel)]="cuenta.tipo_cuenta" required>
+                <input class="form-check-input" type="radio" name="tipo_cuenta" value=Corriente #tipo_cuenta="ngModel" [(ngModel)]="cuenta.tipoCuenta" required>
                 <label class="form-check-label" for="tipo_cuenta">
                 Cuenta corriente
             </label>
@@ -114,6 +114,7 @@
             <div class="row">
                 <div class="d-grid gap-2">
                     <button type="submit" class="btn btn-primary" [disabled]="!forma.valid" (click)="OnSubmit()">Registrarse</button>
+                    <button type="submit" class="btn btn-primary" id="home" (click)="Home()">Home</button>
                 </div>
             </div>
         </form>

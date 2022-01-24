@@ -2,9 +2,9 @@
 
 export interface Cuenta {
     id: number;
-    num_documento: number;
-    tipo_cuenta: string;
-    numero_cuenta: number;
+    numDocumento: number;
+    tipoCuenta: string;
+    numCuenta: number;
     estado: String | undefined;
     saldo: number;
   

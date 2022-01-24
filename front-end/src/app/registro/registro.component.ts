@@ -23,17 +23,17 @@ export class RegistroComponent {
   register: Cliente = {
     nombre: '',
     apellido: '',
-    tipo_documento: '',
-    num_documento: 0,
-    fecha_nacimiento: '',
+    tipoDocumento: '',
+    numDocumento: 0,
+    fechaNacimiento: '',
     email: '',
     contra: ''
   }
   cuenta: Cuenta={
     id:0,
-    numero_cuenta:0,
-    num_documento:0,
-    tipo_cuenta:'',
+    numCuenta:0,
+    numDocumento:0,
+    tipoCuenta:'',
     saldo: 0,
     estado: ''
   }
@@ -43,19 +43,22 @@ export class RegistroComponent {
     console.log(this.register.contra)
     if (this.register.contra !== this.contras.repeatpass) {
       // Emitir alerta POR NO SER IGUALES Y NO DEJAR ENVIAR DATOS
-      alert('Hay que introducir las dos contraseñas iguales para validarlo');
+      alert('Ingresar dos contraseñas iguales');
     }
     else {
       this.service.register(this.register).subscribe( data => {});  
       
       //this.Registrar();
       this.service.registerCuenta(this.cuenta).subscribe( data => {});
-      alert('Se han introducido los datos satisfactoriamente');
+      alert('Datos ingresados correctamente');
       this.Registrar();
     }
   }
   Registrar(){
     this.router.navigate(["login"]);
+  }
+  Home(){
+    this.router.navigate([""])
   }
 }
 

@@ -13,7 +13,7 @@
     </div>
 </form> -->
 
-
+<div class="container-fluid">
 <form class="login-form">
     <div class="heading">Ingresar</div>
     <div class="left">
@@ -22,8 +22,10 @@
         <label for="password">Password</label> <br />
         <input type="password" class="form-control" [(ngModel)]="user.password" name="password" required> <br />
         <input (click)="login()" type="submit" value="Login" />
+        <input (click)="Home()" id="home" type="submit" value="Home" />
     </div>
     <div class="right">
         <img src="http://luquebusiness.com/wp-content/uploads/2022/01/pocket-card-holder-mockup-top-view-scaled.jpg" style="width: 100%; height: auto;" alt="">
     </div>
 </form>
+</div>
