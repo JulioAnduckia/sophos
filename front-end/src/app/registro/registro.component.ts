@@ -1,9 +1,9 @@
 
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Cliente } from 'src/app/Model/Cliente';
+import { Customer } from 'src/app/Model/Customer';
 import { ServiceService } from 'src/app/Service/service.service';
-import { Cuenta } from '../Model/Cuenta';
+import { Account } from '../Model/Account';
 import { ingreso } from '../Model/Login';
 
 
@@ -20,28 +20,29 @@ export class RegistroComponent {
     password: '',
     repeatpass:''
   }
-  register: Cliente = {
-    nombre: '',
-    apellido: '',
-    tipoDocumento: '',
-    numDocumento: 0,
-    fechaNacimiento: '',
+  register: Customer = {
+    name: '',
+    lastName: '',
+    documentType: '',
+    documentNum: 0,
+    birthDate: '',
     email: '',
-    contra: ''
+    password: ''
   }
-  cuenta: Cuenta={
+  account: Account={
     id:0,
-    numCuenta:0,
-    numDocumento:0,
-    tipoCuenta:'',
-    saldo: 0,
-    estado: ''
+    accountNum:0,
+    documentNum:0,
+    accountType:'',
+    balance: 0,
+    state: ''
   }
 
   constructor(private router: Router, public service: ServiceService) { }
+
   OnSubmit() {
-    console.log(this.register.contra)
-    if (this.register.contra !== this.contras.repeatpass) {
+    console.log(this.register.password)
+    if (this.register.password !== this.contras.repeatpass) {
       // Emitir alerta POR NO SER IGUALES Y NO DEJAR ENVIAR DATOS
       alert('Ingresar dos contraseñas iguales');
     }
@@ -49,8 +50,8 @@ export class RegistroComponent {
       this.service.register(this.register).subscribe( data => {});  
       
       //this.Registrar();
-      this.service.registerCuenta(this.cuenta).subscribe( data => {});
-      alert('Datos ingresados correctamente');
+      this.service.registerAccount(this.account).subscribe( data => {});
+      
       this.Registrar();
     }
   }

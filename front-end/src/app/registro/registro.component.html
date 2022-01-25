@@ -5,26 +5,26 @@
             <p class="display-5">Registrate</p>
             <hr />
             <!---->
-            <label for="nombre"><b>Nombre</b></label>
-            <input type="text" #nombre="ngModel" [(ngModel)]="register.nombre" placeholder="Introduzca su nombre" name="nombre" minlength="5" class="form-control" required [ngClass]="{'is-valid': !nombre.invalid, 'is-invalid': nombre.invalid}" />
-            <div class="invalid-feedback" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
-                <div *ngIf="nombre.errors?.['minlength']">
-                    Introduzca un nombre con 5 caracteres mínimo
+            <label for="name"><b>name</b></label>
+            <input type="text" #name="ngModel" [(ngModel)]="register.name" placeholder="Introduzca su name" name="name" minlength="5" class="form-control" required [ngClass]="{'is-valid': !name.invalid, 'is-invalid': name.invalid}" />
+            <div class="invalid-feedback" *ngIf="name.invalid && (name.dirty || name.touched)">
+                <div *ngIf="name.errors?.['minlength']">
+                    Introduzca un name con 5 caracteres mínimo
                 </div>
-                <div *ngIf="nombre.errors?.['required']">
-                    Introduzca un nombre válido por favor
+                <div *ngIf="name.errors?.['required']">
+                    Introduzca un name válido por favor
                 </div>
             </div>
             <!---->
-            <label for="apellido"><b>Apellido</b></label>
-            <input type="text" #apellido="ngModel" [(ngModel)]="register.apellido" placeholder="Introduzca su apellido " name="apellido" minlength="5" class="form-control" required [ngClass]="{'is-valid': !apellido.invalid, 'is-invalid': apellido.invalid}" />
+            <label for="lastName"><b>lastName</b></label>
+            <input type="text" #lastName="ngModel" [(ngModel)]="register.lastName" placeholder="Introduzca su lastName " name="lastName" minlength="5" class="form-control" required [ngClass]="{'is-valid': !lastName.invalid, 'is-invalid': lastName.invalid}" />
 
-            <div class="invalid-feedback" *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)">
-                <div *ngIf="apellido.errors?.['minlength']">
-                    Introduzca un apellido con 5 caracteres mínimo
+            <div class="invalid-feedback" *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
+                <div *ngIf="lastName.errors?.['minlength']">
+                    Introduzca un lastName con 5 caracteres mínimo
                 </div>
-                <div *ngIf="apellido.errors?.['required']">
-                    Introduzca un apellido válido por favor
+                <div *ngIf="lastName.errors?.['required']">
+                    Introduzca un lastName válido por favor
                 </div>
             </div>
             <!---->
@@ -32,56 +32,56 @@
             <!--------espacio tipo_documento-->
             <!---->
             <label><b>Tipo de identificación</b></label><br>
-            <select  [(ngModel)]="register.tipoDocumento" name="tipo_documento" class="form-control">
+            <select  [(ngModel)]="register.documentType" name="documentType" class="form-control">
             <option>Seleccionar</option>
-            <option value="CC">Cédula de ciudadanía (CC)</option>
+            <option value="55">Cédula de ciudadanía (CC)</option>
             <option value="CE">Cédula de extranjería (CE)</option>
             <option value="TP">Tarjeta pasaporte (TP)</option>
             
           </select>
-            <label for="num_identificacion"><b>Número de identificación</b></label>
-            <input type="number" #num_identificacion="ngModel" [(ngModel)]="register.numDocumento" [(ngModel)]="cuenta.numDocumento" placeholder="Introduzca su número de identificación " name="num_identificacion" min="1000000" class="form-control" required [ngClass]="{'is-valid': !num_identificacion.invalid, 'is-invalid': num_identificacion.invalid}"
+            <label for="documentNum"><b>Número de identificación</b></label>
+            <input type="number" #documentNum="ngModel"  [(ngModel)]="account.documentNum" placeholder="Introduzca su número de identificación " name="documentNum" min="1000000" class="form-control" required [ngClass]="{'is-valid': !documentNum.invalid, 'is-invalid': documentNum.invalid}"
             />
 
-            <div class="invalid-feedback" *ngIf="num_identificacion.invalid && (num_identificacion.dirty || num_identificacion.touched)">
-                <div *ngIf="num_identificacion.errors?.['min']">
+            <div class="invalid-feedback" *ngIf="documentNum.invalid && (documentNum.dirty || documentNum.touched)">
+                <div *ngIf="documentNum.errors?.['min']">
                     Introduzca un número de documento con 7 caracteres mínimo
                 </div>
-                <div *ngIf="num_identificacion.errors?.['required']">
+                <div *ngIf="documentNum.errors?.['required']">
                     Introduzca un número válido por favor
                 </div>
             </div>
             <!---->
-            <label for="fecha_nacimiento"><b>Fecha de nacimiento</b></label>
-            <input type="date" #fecha_nacimiento="ngModel" [(ngModel)]="register.fechaNacimiento" placeholder="Introduzca su fecha de nacimiento " name="fecha_nacimiento" max="2007-12-31" class="form-control" required [ngClass]="{'is-valid': !fecha_nacimiento.invalid, 'is-invalid': fecha_nacimiento.invalid}"
+            <label for="birthDate"><b>Fecha de nacimiento</b></label>
+            <input type="date" #birthDate="ngModel" [(ngModel)]="register.birthDate" placeholder="Introduzca su fecha de nacimiento " name="birthDate" max="2007-12-31" class="form-control" required [ngClass]="{'is-valid': !birthDate.invalid, 'is-invalid': birthDate.invalid}"
             />
 
-            <div class="invalid-feedback" *ngIf="fecha_nacimiento.invalid && (fecha_nacimiento.dirty || fecha_nacimiento.touched)">
-                <div *ngIf="fecha_nacimiento.errors?.['min']">
+            <div class="invalid-feedback" *ngIf="birthDate.invalid && (birthDate.dirty || birthDate.touched)">
+                <div *ngIf="birthDate.errors?.['min']">
                     Lo lamento tas pequeño
                 </div>
-                <div *ngIf="fecha_nacimiento.errors?.['required']">
-                    Recuerda que debes ser mayor de 16 años para crear una cuenta
+                <div *ngIf="birthDate.errors?.['required']">
+                    Recuerda que debes ser mayor de 16 años para crear una account
                 </div>
             </div>
             <!---->
-            <label><b>Tipo de cuenta a crear</b></label><br>
+            <label><b>Tipo de account a crear</b></label><br>
             <div class="form-check">
-                <input class="form-check-input" type="radio" #tipo_cuenta="ngModel" [(ngModel)]="cuenta.tipoCuenta" name="tipo_cuenta" value=Ahorros required>
-                <label class="form-check-label" for="tipo_cuenta">
-                Cuenta de ahorros
+                <input class="form-check-input" type="radio" #tipo_account="ngModel" [(ngModel)]="account.accountType" name="tipo_account" value=Ahorros required>
+                <label class="form-check-label" for="tipo_account">
+                account de ahorros
             </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="tipo_cuenta" value=Corriente #tipo_cuenta="ngModel" [(ngModel)]="cuenta.tipoCuenta" required>
-                <label class="form-check-label" for="tipo_cuenta">
-                Cuenta corriente
+                <input class="form-check-input" type="radio" name="tipo_account" value=Corriente #tipo_account="ngModel" [(ngModel)]="account.accountType" required>
+                <label class="form-check-label" for="tipo_account">
+                account corriente
             </label>
             </div>
-            <!-- <label for="tipo_cuenta"><b>Cuenta de ahorros</b></label>
-        <input type="radio" #tipo_cuenta="ngModel" [(ngModel)]="cuenta.tipo_cuenta" name="tipo_cuenta" value=Ahorros required>
-        <label for="tipo_cuenta"><b> Cuenta corriente</b></label>
-        <input type="radio" name="tipo_cuenta" value=Corriente #tipo_cuenta="ngModel" [(ngModel)]="cuenta.tipo_cuenta" required><br> -->
+            <!-- <label for="tipo_account"><b>account de ahorros</b></label>
+        <input type="radio" #tipo_account="ngModel" [(ngModel)]="account.tipo_account" name="tipo_account" value=Ahorros required>
+        <label for="tipo_account"><b> account corriente</b></label>
+        <input type="radio" name="tipo_account" value=Corriente #tipo_account="ngModel" [(ngModel)]="account.tipo_account" required><br> -->
             <!---->
 
             <label for="email"><b>Correo electrónico</b></label>
@@ -96,7 +96,7 @@
                 </div>
             </div>
             <label for="psw"><b>Contraseña</b></label>
-            <input type="password" placeholder="Introduzca la contraseña" #password="ngModel" [(ngModel)]="register.contra" name="password" class="form-control" required [ngClass]="{'is-valid': !password.invalid, 'is-invalid': password.invalid}" />
+            <input type="password" placeholder="Introduzca la contraseña" #password="ngModel" [(ngModel)]="register.password" name="password" class="form-control" required [ngClass]="{'is-valid': !password.invalid, 'is-invalid': password.invalid}" />
             <div class="invalid-feedback" *ngIf="password.invalid && (password.dirty || password.touched)">
                 <div *ngIf="password.errors?.['required']">
                     Introduzca una contraseña por favor

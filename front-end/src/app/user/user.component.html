@@ -7,12 +7,12 @@
             <div class="col-4">
                 <div class="row">
                     <div class="card text-white bg-dark mb-3" style="max-width: 90%;">
-                        <div class="card-header">Tipo de cuenta: {{cuenta.tipoCuenta}}</div>
+                        <div class="card-header">Tipo de account: {{account.accountType}}</div>
                         <div class="card-body">
-                            <h6 class="card-text">Numero de cuenta:</h6>
-                            <h5 class="card-title">{{cuenta.numCuenta}}</h5>
+                            <h6 class="card-text">Numero de account:</h6>
+                            <h5 class="card-title">{{account.accountNum}}</h5>
                             <h6 class="card-text">Saldo:</h6>
-                            <h5 class="card-title">{{cuenta.saldo | currency:'USD'}}</h5>
+                            <h5 class="card-title">{{account.balance | currency:'USD'}}</h5>
                         </div>
                     </div>
                 </div>
@@ -36,7 +36,7 @@
     <div class="col-11 shadow-lg p-3 mb-5 bg-body rounded">
         <p class="display-5">Consigna y Retira</p>
         <!-- <div class="d-grid gap-2">
-            <input type="number" placeholder="Introduzca el monto" #saldo="ngModel" [(ngModel)]="cuenta.saldo" name="saldo" />
+            <input type="number" placeholder="Introduzca el monto" #saldo="ngModel" [(ngModel)]="account.saldo" name="saldo" />
             <div class="col-5">
                 <button type="submit" class="btn btn-primary">Cosignacion</button>
                 <button type="submit" class="btn btn btn-success">Retiro</button>
@@ -44,7 +44,7 @@
 
         </div> -->
         <div class="input-group">
-            <input [(ngModel)]="saldo" name="saldo" type="number" class="form-control" placeholder="Introduzca el monto" aria-label="Introduzca el monto">
+            <input [(ngModel)]="balance" name="balance" type="number" class="form-control" placeholder="Introduzca el monto" aria-label="Introduzca el monto">
             <button class="btn btn-outline-primary" type="button" (click)="Consignacion()">Consignación</button>
             <button class="btn btn-outline-success" type="button" (click)="Retiro()">Retiro</button>
         </div>
@@ -55,12 +55,12 @@
 
         <div class="input-group mb-3">
 
-            <input [(ngModel)]="numeroCuenta" name="numeroCuenta" type="number" class="form-control" >
-            <span class="input-group-text" id="inputGroup-sizing-default">Número de cuenta</span>
+            <input [(ngModel)]="numeroAccount" name="numeroAccount" type="number" class="form-control" >
+            <span class="input-group-text" id="inputGroup-sizing-default">Número de account</span>
         </div>
         <div class="input-group mb-3">
 
-            <input [(ngModel)]="saldoCuenta" name="saldoCuenta" type="number" class="form-control" >
+            <input [(ngModel)]="balanceAccount" name="balanceAccount" type="number" class="form-control" >
             <span class="input-group-text" id="inputGroup-sizing-default">Monto a transferir</span>
         </div>
 
@@ -75,26 +75,26 @@
 <div class="container">
     <div class="card">
         <div class="card-header">
-            <h3>Estado de cuenta</h3>
+            <h3>Estado de account</h3>
         </div>
         <div class="card-body">
-            <table class="table table-hover">
+            <table class="table table-hover" >
                 <thead>
                     <tr>
                         <th>Fecha</th>
                         <th>Tipo de movimiento</th>
-                        <th>Cuenta de traslado</th>
+                        <th>account de traslado</th>
                         <th>movimiento</th>
                         <th>Saldo</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let transfer of transfer">
-                        <td>{{transfer.fechaRealizacion | date:'yyyy-MM-dd HH:mm:ss-SS'}}</td>
-                        <td>{{transfer.tipoMovimiento }}</td>
-                        <td>{{transfer.cuentaTraslado}}</td>
-                        <td>{{transfer.transferencia| currency:'USD'}}</td>
-                        <td>{{transfer.saldo| currency:'USD'}}</td>
+                    <tr *ngFor="let transfer of transfer" > 
+                        <td>{{transfer.transferDate | date:'yyyy-MM-dd HH:mm:ss-SS'}}</td>
+                        <td>{{transfer.movementType }}</td>
+                        <td>{{transfer.transferAccount}}</td>
+                        <td>{{transfer.toTransfer| currency:'USD'}}</td>
+                        <td>{{transfer.balance| currency:'USD'}}</td>
                     </tr>
                 </tbody>
             </table>
