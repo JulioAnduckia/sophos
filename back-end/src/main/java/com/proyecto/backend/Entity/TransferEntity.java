@@ -23,20 +23,20 @@ public class TransferEntity implements Serializable {
     private double toTransfer;
     @Column(name = "balance")
     private double balance;
-    @Column(name = "documentType")
-    private int documentType;
+    @Column(name = "documentNum")
+    private int documentNum;
     
     public TransferEntity(){}
 
     public TransferEntity(int id, Date transferDate, String movementType, int transferAccount, double toTransfer,
-            double balance, int documentType) {
+            double balance, int documentNum) {
         this.id = id;
         this.transferDate = transferDate;
         this.movementType = movementType;
         this.transferAccount = transferAccount;
         this.toTransfer = toTransfer;
         this.balance = balance;
-        this.documentType = documentType;
+        this.documentNum = documentNum;
     }
 
     public int getId() {
@@ -87,12 +87,12 @@ public class TransferEntity implements Serializable {
         this.balance = balance;
     }
 
-    public int getDocumentType() {
-        return documentType;
+    public int getDocumentNum() {
+        return documentNum;
     }
 
-    public void setDocumentType(int documentType) {
-        this.documentType = documentType;
+    public void setDocumentNum(int documentNum) {
+        this.documentNum = documentNum;
     }
 
     

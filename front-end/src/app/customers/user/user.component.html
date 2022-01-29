@@ -1,0 +1,137 @@
+<div class="row d-flex justify-content-center">
+
+    <div class="col-11 shadow-lg p-3 mb-5 bg-body rounded">
+        <p class="display-5">Customers</p>
+        <div class="container">
+            <div class="card">                
+                    <table class="table table-hover">
+                        <thead class="card-header">
+                            <tr>
+                                <th>id</th>
+                                <th>Name</th>
+                                <th>Document type</th>
+                                <th>Document number</th>
+                                <th>Email</th>
+                                <th>Birth Date</th>
+                                <th>init date</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody >
+                            <tr *ngFor="let customer of customers">
+                                
+                                <td >{{customer.id }}</td>
+                                <td>{{customer.name | uppercase}} {{customer.lastName | uppercase}}</td>
+                                <td>{{customer.documentType |uppercase }}</td>
+                                <td>{{customer.documentNum}}</td>
+                                <td>{{customer.email |uppercase}}</td>
+                                <td>{{customer.birthDate | date:'yyyy-MM-dd HH:mm:ss-SS'}}</td>
+                                <td>{{customer.initDate | date:'yyyy-MM-dd HH:mm:ss-SS'}}</td>
+                                <td><button class="btn btn-outline-primary" type="button" (click)="edit(customer.id)">UPDATE</button></td>
+                                <td><button class="btn btn-outline-danger" type="button" >DELETE</button></td>
+                                <!--<td>{{customer.tocustomer| currency:'USD'}}</td>
+                                    <td>{{customer.initDate | date:'yyyy-MM-dd HH:mm:ss-SS'}}</td>
+                                <td>{{customer.balance| currency:'USD'}}</td>-->
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="estado">
+            <app-update></app-update>
+        </div>
+        <!--<div class="d-flex p-3">
+            <div class="col-4">
+                <div class="row">
+                    <div class="card text-white bg-dark mb-3" style="max-width: 90%;">
+                        <div class="card-header">Tipo de account: {{account.accountType}}</div>
+                        <div class="card-body">
+                            <h6 class="card-text">Numero de account:</h6>
+                            <h5 class="card-title">{{account.accountNum}}</h5>
+                            <h6 class="card-text">Saldo:</h6>
+                            <h5 class="card-title">{{account.balance | currency:'USD'}}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-8">
+                <div class="card text-white bg-primary mb-3" style="max-width: 100%;">
+                    <div class="card-header">{{tipodoccliente_storag}} {{numerodoccliente_storag}}</div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{nombrecliente_storag }} {{apellidocliente_storag}}</h5>
+                        <h6 class="card-text">{{emailcliente_storag}}</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>-->
+<!--
+    <div class="col-11 shadow-lg p-3 mb-5 bg-body rounded">
+        <p class="display-5">Consigna y Retira</p>
+        <div class="input-group">
+            <input [(ngModel)]="balance" name="balance" type="number" class="form-control"
+                placeholder="Introduzca el monto" aria-label="Introduzca el monto">
+            <button class="btn btn-outline-primary" type="button" (click)="Consignacion()">Consignación</button>
+            <button class="btn btn-outline-success" type="button" (click)="Retiro()">Retiro</button>
+        </div>
+    </div>
+
+    <div class="col-11 shadow-lg p-3 mb-5 bg-body rounded">
+        <p class="display-5">Transfiere</p>
+
+        <div class="input-group mb-3">
+
+            <input [(ngModel)]="numeroAccount" name="numeroAccount" type="number" class="form-control">
+            <span class="input-group-text" id="inputGroup-sizing-default">Número de account</span>
+        </div>
+        <div class="input-group mb-3">
+
+            <input [(ngModel)]="balanceAccount" name="balanceAccount" type="number" class="form-control">
+            <span class="input-group-text" id="inputGroup-sizing-default">Monto a customerir</span>
+        </div>
+
+        <div class="d-flex justify-content-end">
+
+            <button class="btn btn-outline-success" type="button" (click)="Transaccion()">Transfiere</button>
+        </div>
+    </div>
+
+</div>
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h3>Estado de account</h3>
+        </div>
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Tipo de movimiento</th>
+                        <th>account de traslado</th>
+                        <th>movimiento</th>
+                        <th>Saldo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let customer of customer">
+                        <td>{{customer.customerDate | date:'yyyy-MM-dd HH:mm:ss-SS'}}</td>
+                        <td>{{customer.movementType }}</td>
+                        <td>{{customer.customerAccount}}</td>
+                        <td>{{customer.tocustomer| currency:'USD'}}</td>
+                        <td>{{customer.balance| currency:'USD'}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="nombreesquinainf">
+    Bienvenido {{nombrecliente_storag}}
+    <button type="submit" class="btn btn-primary" id="home" (click)="Home()">SALIR</button>
+</div>-->

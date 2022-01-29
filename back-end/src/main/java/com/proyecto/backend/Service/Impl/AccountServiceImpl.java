@@ -3,7 +3,11 @@ package com.proyecto.backend.Service.Impl;
 import java.util.List;
 import java.util.Optional;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import com.proyecto.backend.Entity.AccountEntity;
+import com.proyecto.backend.Entity.CustomerEntity;
 import com.proyecto.backend.Repository.IAccountRepository;
 import com.proyecto.backend.Service.IAccountService;
 
@@ -12,8 +16,12 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AccountServiceImpl implements IAccountService {
+
     @Autowired
     private IAccountRepository data;
+
+    @PersistenceContext
+	EntityManager entityManager;
 
     @Override
     public List<AccountEntity> get() {
@@ -21,27 +29,39 @@ public class AccountServiceImpl implements IAccountService {
     }
 
     @Override
-    public void save(AccountEntity c) {
-            data.save(new AccountEntity(c.getId(), c.getDocumentNum(), c.getAccountType(), 
-            c.getAccountNum(), c.getState(), c.getBalance()));      
+    public AccountEntity save(AccountEntity c) throws Exception{
+            return data.save(c);      
     }
 
     @Override
-    public void delete(AccountEntity c) {
-        data.delete(c);
-        
+    public boolean delete(String number) throws Exception {
+        data.deleteById(number);
+        return true;
     }
 
-    @Override
+
+    /*@Override
     public Optional<AccountEntity> findByDocumentNum(int documentNum) {
         return data.findByDocumentNum(documentNum);
     }
-
+*/
     @Override
     public Optional<AccountEntity> findByAccountNum(int accountNum) {
         return data.findByAccountNum(accountNum);
     }
 
+    /*@Override
+    public List<AccountEntity> getByCustomerId(Integer customerId) throws Exception {
+        // TODO Auto-generated method stub
+        return null;
+    }*/
+
+    @Override
+    public Optional<AccountEntity> findByAccountTypeAndCustomer(String accountType, CustomerEntity customer) {
+        return data.findByAccountTypeAndCustomer(accountType, customer);
+    }
+
+    
      
 
     

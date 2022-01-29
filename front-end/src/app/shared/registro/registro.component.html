@@ -1,0 +1,122 @@
+
+<div class="container-fluid">
+
+    <div class="container shadow-lg p-3 mb-5 bg-body rounded">
+        
+
+        <form #forma="ngForm" method="post" class="formulario">
+            <p class="display-5">Registrate</p>
+            <hr />
+            <!---->
+            <label for="name"><b>name</b></label>
+            <input type="text" #name="ngModel" [(ngModel)]="customer.name" placeholder="Introduzca su name" name="name" minlength="5" class="form-control" required [ngClass]="{'is-valid': !name.invalid, 'is-invalid': name.invalid}" />
+            <div class="invalid-feedback" *ngIf="name.invalid && (name.dirty || name.touched)">
+                <div *ngIf="name.errors?.['minlength']">
+                    Introduzca un name con 5 caracteres mínimo
+                </div>
+                <div *ngIf="name.errors?.['required']">
+                    Introduzca un name válido por favor
+                </div>
+            </div>
+            <!---->
+            <label for="lastName"><b>lastName</b></label>
+            <input type="text" #lastName="ngModel" [(ngModel)]="customer.lastName" placeholder="Introduzca su lastName " name="lastName" minlength="5" class="form-control" required [ngClass]="{'is-valid': !lastName.invalid, 'is-invalid': lastName.invalid}" />
+
+            <div class="invalid-feedback" *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
+                <div *ngIf="lastName.errors?.['minlength']">
+                    Introduzca un lastName con 5 caracteres mínimo
+                </div>
+                <div *ngIf="lastName.errors?.['required']">
+                    Introduzca un lastName válido por favor
+                </div>
+            </div>
+            <!---->
+            <!--------espacio tipo_documento-->
+            <!--------espacio tipo_documento-->
+            <!---->
+            <label><b>Tipo de identificación</b></label><br>
+            <select  [(ngModel)]="customer.documentType" name="documentType" class="form-control">
+            <option>Seleccionar</option>
+            <option value="CC">Cédula de ciudadanía (CC)</option>
+            <option value="CE">Cédula de extranjería (CE)</option>
+            <option value="TP">Tarjeta pasaporte (TP)</option>
+            
+          </select>
+            <label for="documentNum"><b>Número de identificación</b></label>
+            <input type="number" #documentNum="ngModel"  [(ngModel)]="customer.documentNum" placeholder="Introduzca su número de identificación " name="documentNum" min="1000000" class="form-control" required [ngClass]="{'is-valid': !documentNum.invalid, 'is-invalid': documentNum.invalid}"
+            />
+
+            <div class="invalid-feedback" *ngIf="documentNum.invalid && (documentNum.dirty || documentNum.touched)">
+                <div *ngIf="documentNum.errors?.['min']">
+                    Introduzca un número de documento con 7 caracteres mínimo
+                </div>
+                <div *ngIf="documentNum.errors?.['required']">
+                    Introduzca un número válido por favor
+                </div>
+            </div>
+            <!---->
+            <label for="birthDate"><b>Fecha de nacimiento</b></label>
+            <input type="date" #birthDate="ngModel" [(ngModel)]="customer.birthDate" placeholder="Introduzca su fecha de nacimiento " name="birthDate" max="2007-12-31" class="form-control" required [ngClass]="{'is-valid': !birthDate.invalid, 'is-invalid': birthDate.invalid}"
+            />
+
+            <div class="invalid-feedback" *ngIf="birthDate.invalid && (birthDate.dirty || birthDate.touched)">
+                <div *ngIf="birthDate.errors?.['min']">
+                    Lo lamento tas pequeño
+                </div>
+                <div *ngIf="birthDate.errors?.['required']">
+                    Recuerda que debes ser mayor de 16 años para crear una account
+                </div>
+            </div>
+            <!---->
+            <label><b>Tipo de account a crear</b></label><br>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" #tipo_account="ngModel" [(ngModel)]="account.accountType" name="tipo_account" value=Ahorros required>
+                <label class="form-check-label" for="tipo_account">
+                account de ahorros
+            </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="tipo_account" value=Corriente #tipo_account="ngModel" [(ngModel)]="account.accountType" required>
+                <label class="form-check-label" for="tipo_account">
+                account corriente
+            </label>
+            </div>
+            <!-- <label for="tipo_account"><b>account de ahorros</b></label>
+        <input type="radio" #tipo_account="ngModel" [(ngModel)]="account.tipo_account" name="tipo_account" value=Ahorros required>
+        <label for="tipo_account"><b> account corriente</b></label>
+        <input type="radio" name="tipo_account" value=Corriente #tipo_account="ngModel" [(ngModel)]="account.tipo_account" required><br> -->
+            <!---->
+
+            <label for="email"><b>Correo electrónico</b></label>
+            <input type="email" #email="ngModel" [(ngModel)]="customer.email" placeholder="Introduzca la correo electrónico" name="email" class="form-control" required [ngClass]="{'is-valid': !email.invalid, 'is-invalid': email.invalid}" pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
+            />
+            <div class="invalid-feedback" *ngIf="email.invalid && (email.dirty || email.touched)">
+                <div *ngIf="email.errors?.['required']">
+                    Introduzca un correo electrónico válido por favor {{ email.value }}
+                </div>
+                <div *ngIf="email.errors && email.errors?.['pattern']">
+                    El correo electrónico no sigue el formato correcto. Sigue este ejemplo: julito@sophos.com {{ email.value }}
+                </div>
+            </div>
+            <!--
+            <label for="psw"><b>Contraseña</b></label>
+            <input type="password" placeholder="Introduzca la contraseña" #password="ngModel" [(ngModel)]="customer.password" name="password" class="form-control" required [ngClass]="{'is-valid': !password.invalid, 'is-invalid': password.invalid}" />
+            <div class="invalid-feedback" *ngIf="password.invalid && (password.dirty || password.touched)">
+                <div *ngIf="password.errors?.['required']">
+                    Introduzca una contraseña por favor
+                </div>
+            </div>
+            <label for="psw"><b>Contraseña nuevamente</b></label>
+            <input type="password" placeholder="Introduzca la contraseña"  [(ngModel)]="repeatpass" name="repeatpass" class="form-control" required >
+            <br>
+
+            <div class="row">
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-primary" [disabled]="!forma.valid" (click)="OnSubmit()">Registrarse</button>
+                    <button type="submit" class="btn btn-primary" id="home" (click)="Home()">Home</button>
+                </div>
+            </div>
+            -->
+        </form>
+    </div>
+</div>

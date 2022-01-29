@@ -1,18 +1,17 @@
 package com.proyecto.backend.Entity;
 
-import java.io.Serializable;
-
 import java.util.Date;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "customers")
-public class CustomerEntity implements Serializable {
-    
+public class CustomerEntity {
+
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     @Column(name = "name")
     private String name;
     @Column(name = "lastName")
@@ -20,7 +19,7 @@ public class CustomerEntity implements Serializable {
     @Column(name = "documentType")
     private String documentType;
     @Column(name = "documentNum")
-    private int documentNum;
+    private String documentNum;
     @Column(name = "birthDate")
     private Date birthDate;
     @Column(name = "email")
@@ -30,25 +29,17 @@ public class CustomerEntity implements Serializable {
     @Column(name = "password")
     private String password;
 
-    public CustomerEntity(){}
+    //@OneToMany(mappedBy = "customer")
+    //private List<AccountEntity> accounts;
 
-    public CustomerEntity(int id, String name, String lastName, String documentType, int documentNum, Date birthDate,
-            String email, String password) {
-        this.id = id;
-        this.name = name;
-        this.lastName = lastName;
-        this.documentType = documentType;
-        this.documentNum = documentNum;
-        this.birthDate = birthDate;
-        this.email = email;
-        this.password = password;
+    public CustomerEntity() {
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -76,11 +67,11 @@ public class CustomerEntity implements Serializable {
         this.documentType = documentType;
     }
 
-    public int getDocumentNum() {
+    public String getDocumentNum() {
         return documentNum;
     }
 
-    public void setDocumentNum(int documentNum) {
+    public void setDocumentNum(String documentNum) {
         this.documentNum = documentNum;
     }
 
@@ -116,9 +107,16 @@ public class CustomerEntity implements Serializable {
         this.password = password;
     }
 
+    /*public List<AccountEntity> getAccounts() {
+        return accounts;
+    }
+
+    public void setAccounts(List<AccountEntity> accounts) {
+        this.accounts = accounts;
+    }*/
+
     
-    
-    
-    
+
+   
 
 }

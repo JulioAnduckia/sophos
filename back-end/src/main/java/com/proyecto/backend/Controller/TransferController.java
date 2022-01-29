@@ -5,6 +5,8 @@ import com.proyecto.backend.Entity.TransferEntity;
 import com.proyecto.backend.Service.ITransferService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,18 +25,25 @@ public class TransferController {
     ITransferService service;
 
     @GetMapping
-    public List<TransferEntity> get() {
-        return service.get();
+    public ResponseEntity<List<TransferEntity>> get() {
+        return ResponseEntity
+        .status(HttpStatus.OK)
+        .body(service.get());
     }
 
     @PostMapping
-    public void addTransfer(@RequestBody TransferEntity c) {
+    public ResponseEntity<String> addTransfer(@RequestBody TransferEntity c) {
         service.save(c);
+        return ResponseEntity
+        .status(HttpStatus.CREATED)
+        .body("Transfer created");
     }
     @GetMapping(value = "/{documentNum}")
-    public List<TransferEntity> login(@PathVariable("documentNum") String documentNum) {
+    public ResponseEntity<List<TransferEntity>> login(@PathVariable("documentNum") String documentNum) {
 
-        return service.findByDocumentNum(Integer.parseInt(documentNum));
+        return ResponseEntity
+        .status(HttpStatus.OK)
+        .body(service.findByDocumentNum(Integer.parseInt(documentNum)));
     }
    
 

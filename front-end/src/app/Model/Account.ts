@@ -1,11 +1,9 @@
+import { CustomerDto } from "./CustomerDto";
 
-
-export interface Account {
-    id: number;
-    documentNum: number;
-    accountType: string;
+export interface AccountDto {
+    customer: CustomerDto| null;
     accountNum: number;
-    state: String | undefined;
+    accountType: string;
+    state: string | undefined;
     balance: number;
-  
 }

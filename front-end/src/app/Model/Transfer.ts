@@ -2,7 +2,7 @@ export interface Transfer{
     
     id: number;
     transferDate: Date;
-    movementType: String;
+    movementType: string;
     transferAccount: number;
     toTransfer: number;
     balance: number;

@@ -23,7 +23,7 @@ public class TransferServiceImpl implements ITransferService{
     @Override
     public void save(TransferEntity c) {
         data.save(new TransferEntity(c.getId(), c.getTransferDate(), c.getMovementType(),
-         c.getTransferAccount(), c.getToTransfer(), c.getBalance(), c.getDocumentType()));
+         c.getTransferAccount(), c.getToTransfer(), c.getBalance(), c.getDocumentNum()));
     }
 
     @Override

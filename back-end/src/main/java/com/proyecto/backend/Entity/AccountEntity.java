@@ -1,58 +1,29 @@
 package com.proyecto.backend.Entity;
 
-import java.io.Serializable;
-
 import java.util.Date;
 import javax.persistence.*;
 
 @Entity
 @Table(name = "accounts")
-public class AccountEntity implements Serializable {
+public class AccountEntity {
     
     @Id
-    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    @Column(name = "documentNum")
-    private int documentNum;
-    @Column(name = "accountType")
-    private String accountType;
     @Column(name = "accountNum")
     private int accountNum;
+    @Column(name = "accountType")
+    private String accountType;
     @Column(name = "state")
     private String state;
     @Column(name = "balance")
     private double balance;
     @Column(name = "openDate")
     private Date openDate= new Date();
-    
-    public AccountEntity(){}
 
-    public AccountEntity(int id, int documentNum, String accountType, int accountNum, String state, double balance) {
-        this.id = id;
-        this.documentNum = documentNum;
-        this.accountType = accountType;
-        this.state = state;
-        this.balance = balance;
-        if(accountNum != 0){ this.accountNum = accountNum;}
-        else{this.accountNum= (int) (Math.random() * 99999 ) + 10000;}
-    }
+    @JoinColumn(name="id")
+    @ManyToOne
+    private CustomerEntity customer;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getDocumentNum() {
-        return documentNum;
-    }
-
-    public void setDocumentNum(int documentNum) {
-        this.documentNum = documentNum;
-    }
 
     public String getAccountType() {
         return accountType;
@@ -94,6 +65,13 @@ public class AccountEntity implements Serializable {
         this.openDate = openDate;
     }
 
+    public CustomerEntity getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(CustomerEntity customer) {
+        this.customer = customer;
+    }
     
     
 

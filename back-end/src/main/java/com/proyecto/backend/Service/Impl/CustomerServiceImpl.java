@@ -16,24 +16,40 @@ public class CustomerServiceImpl implements ICustomerService {
     private ICustomerRepository data;
 
     @Override
-    public List<CustomerEntity> get() {
+    public List<CustomerEntity> get() throws Exception {
         return (List<CustomerEntity>) data.findAll();
     }
 
     @Override
-    public void save(CustomerEntity c) {
-        data.save(new CustomerEntity(c.getId(), c.getName(), c.getLastName(), 
-        c.getDocumentType(), c.getDocumentNum(), c.getBirthDate(), c.getEmail(), c.getPassword()));
+    public CustomerEntity save(CustomerEntity c) throws Exception{
+        return data.save(c);
     }
 
     @Override
-    public void delete(CustomerEntity c) {       
-        data.delete(c);
+    public  boolean delete(Integer id) throws Exception {
+		data.deleteById(id);
+		return true;
     }
 
     @Override
-    public Optional<CustomerEntity> findByEmailAndPassword(String email, String password) {
+    public Optional<CustomerEntity> findByEmailAndPassword(String email, String password) throws Exception {
         return data.findByEmailAndPassword(email, password);
+    }
+
+    @Override
+    public Optional<CustomerEntity> findByEmail(String email) {
+        return data.findByEmail(email);
+    }
+
+    @Override
+    public Optional<CustomerEntity> findByDocumentTypeAndDocumentNum(String documentType, String documentNum) {
+        return data.findByDocumentTypeAndDocumentNum(documentType, documentNum);
+    }
+
+    @Override
+    public Optional<CustomerEntity> findById(Integer id) {
+        
+        return data.findById(id);
     }
 
     
