@@ -1,0 +1,24 @@
+<div class="modal-body">
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <div class="container-fluid">
+
+
+
+
+        <form #forma="ngForm" method="post" class="formulario">
+            <label for="psw"><b>Contraseña</b></label>
+            <input type="password" placeholder="Introduzca la contraseña" #password="ngModel" [(ngModel)]="user.password" name="password" class="form-control" required [ngClass]="{'is-valid': !password.invalid, 'is-invalid': password.invalid}" />
+            <div class="invalid-feedback" *ngIf="password.invalid && (password.dirty || password.touched)">
+                <div *ngIf="password.errors?.['required']">
+                    Introduzca una contraseña por favor
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-primary"  (click)="update()">Update</button>
+        <button type="button" class="btn btn-outline-danger" (click)="activeModal.close('Close click')" >Close</button>
+    </div>
+</div>

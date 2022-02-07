@@ -1,0 +1,94 @@
+<div class="modal-body">
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <div class="container-fluid">
+
+
+
+
+        <form #forma="ngForm" method="post" class="formulario">
+            <p class="display-6">Create customer</p>
+            <hr />
+            <!---->
+            <label for="name"><b>Name</b></label>
+            <input type="text" #name="ngModel" [(ngModel)]="customer.name" placeholder={{customer.name}} name="name"
+                minlength="3" class="form-control" required
+                [ngClass]="{'is-valid': !name.invalid, 'is-invalid': name.invalid}" />
+            <div class="invalid-feedback" *ngIf="name.invalid && (name.dirty || name.touched)">
+                <div *ngIf="name.errors?.['minlength']">
+                    Please enter min 3 characters
+                </div>
+                <div *ngIf="name.errors?.['required']">
+                    Please enter valid name
+                </div>
+            </div>
+            <!---->
+            <label for="lastName"><b>Lastname</b></label>
+            <input type="text" #lastName="ngModel" [(ngModel)]="customer.lastName" placeholder={{customer.lastName}} 
+                name="lastName" minlength="3" class="form-control" required
+                [ngClass]="{'is-valid': !lastName.invalid, 'is-invalid': lastName.invalid}" />
+
+            <div class="invalid-feedback" *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
+                <div *ngIf="lastName.errors?.['minlength']">
+                    Please enter min 3 characters
+                </div>
+                <div *ngIf="lastName.errors?.['required']">
+                    Please enter valid name
+                </div>
+            </div>
+
+            <label><b>Document type</b></label><br>
+            <select [(ngModel)]="customer.documentType" name="documentType" class="form-control">
+                <option>Choose</option>
+                <option value="CC">Cédula de ciudadanía (CC)</option>
+                <option value="CE">Cédula de extranjería (CE)</option>
+                <option value="TP">Tarjeta pasaporte (TP)</option>
+
+            </select>
+            <label for="documentNum"><b>Document number</b></label>
+            <input type="number" #documentNum="ngModel" [(ngModel)]="customer.documentNum"
+                placeholder={{customer.documentNum}} name="documentNum" min="1000000"
+                class="form-control" required
+                [ngClass]="{'is-valid': !documentNum.invalid, 'is-invalid': documentNum.invalid}" />
+
+            <div class="invalid-feedback" *ngIf="documentNum.invalid && (documentNum.dirty || documentNum.touched)">
+                <div *ngIf="documentNum.errors?.['min']">
+                    Please enter min 7 characters 
+                </div>
+                <div *ngIf="documentNum.errors?.['required']">
+                    Please enter valid document number
+                </div>
+            </div>
+
+            <label for="birthDate"><b>Date of birth</b></label>
+            <input type="date" #birthDate="ngModel" [(ngModel)]="customer.birthDate"
+                placeholder={{customer.birthDate}} name="birthDate" max="2007-12-31" class="form-control"
+                required [ngClass]="{'is-valid': !birthDate.invalid, 'is-invalid': birthDate.invalid}" />
+
+            <div class="invalid-feedback" *ngIf="birthDate.invalid && (birthDate.dirty || birthDate.touched)">
+                <div *ngIf="birthDate.errors?.['required']">
+                    Pleae enter valid date of birth
+                </div>
+            </div>
+
+            <label for="email"><b>Email</b></label>
+            <input type="email" #email="ngModel" [(ngModel)]="customer.email"
+                placeholder={{customer.email}} name="email" class="form-control" required
+                [ngClass]="{'is-valid': !email.invalid, 'is-invalid': email.invalid}"
+                pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$" />
+            <div class="invalid-feedback" *ngIf="email.invalid && (email.dirty || email.touched)">
+                <div *ngIf="email.errors?.['required']">
+                    Please enter valid Email
+                </div>
+                <div *ngIf="email.errors && email.errors?.['pattern']">
+                    The email no have a correct format. Please follow the example: julito@sophos.com 
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-success"  (click)="create()">Create</button>
+        <button type="button" class="btn btn-outline-danger" (click)="activeModal.close('Close click')" >Close</button>
+    </div>
+</div>

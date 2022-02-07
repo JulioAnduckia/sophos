@@ -1,0 +1,31 @@
+<div class="modal-body">
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <div class="container-fluid">
+
+
+
+
+        <form #forma="ngForm" method="post" class="formulario">
+            <p class="display-6">Create account</p>
+            <hr />
+            <label for="name"><b>Name</b></label>
+            <input type="text" #name="ngModel" [(ngModel)]="account.accountType" placeholder={{account.accountType}} name="name"
+                minlength="3" class="form-control" required
+                [ngClass]="{'is-valid': !name.invalid, 'is-invalid': name.invalid}" />
+            <div class="invalid-feedback" *ngIf="name.invalid && (name.dirty || name.touched)">
+                <div *ngIf="name.errors?.['minlength']">
+                    Please enter min 3 characters
+                </div>
+                <div *ngIf="name.errors?.['required']">
+                    Please enter valid name
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-success" (click)="create()" >Create</button>
+        <button type="button" class="btn btn-outline-danger" (click)="activeModal.close('Close click')" >Close</button>
+    </div>
+</div>

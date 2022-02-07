@@ -104,6 +104,59 @@ public class AccountController {
         return new ResponseEntity<>(response, status);
     }
 
+    @DeleteMapping(value = "/delete/{accountNum}")
+    public ResponseEntity<GeneralResponse<Boolean>> delete(@PathVariable("accountNum") Integer id) {
+
+        boolean srhOk = false;
+
+        GeneralResponse<Boolean> response = new GeneralResponse<>();
+        HttpStatus status = null;
+        boolean data = false;
+        String msg;
+
+        try {
+            srhOk = service.findByAccountNum(id).isPresent();
+
+            if (srhOk) {
+
+                data = service.delete(id);
+
+                msg = "Successful clear to customer " + id;
+
+                response.setMessage(msg);
+                response.setSuccess(true);
+                response.setData(data);
+                response.setResp("success");
+                status = HttpStatus.OK;
+
+            } else {
+
+                msg = "It didn't find customer record";
+
+                response.setMessage(msg);
+                response.setSuccess(true);
+                response.setData(data);
+                response.setResp("info");
+                status = HttpStatus.OK;
+
+            }
+
+        } catch (Exception e) {
+
+            msg = "Something has failed. Please contact suuport.";
+
+            status = HttpStatus.INTERNAL_SERVER_ERROR;
+            response.setMessage(msg);
+            response.setSuccess(false);
+            response.setResp("Error");
+
+            String log = "End point DELETE/customers has failed. " + e.getLocalizedMessage();
+            logger.error(log);
+        }
+
+        return new ResponseEntity<>(response, status);
+    }
+
     @PutMapping(value = "/balance")
     public ResponseEntity<GeneralResponse<AccountEntity>> updateBalance(@RequestBody AccountEntity a) {
         double endBalance = 0;
@@ -207,7 +260,6 @@ public class AccountController {
         String icon = null;
 
         try {
-
             validateA = service.findByAccountNum(a.getAccountNum());
 
             if (validateA.isPresent()) {
@@ -263,5 +315,38 @@ public class AccountController {
 
         return new ResponseEntity<>(response, status);
     }
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<GeneralResponse<List<AccountEntity>>> findByCustomerId(@PathVariable("id") Integer id) {
+
+        GeneralResponse<List<AccountEntity>> response = new GeneralResponse<>();
+        HttpStatus status = null;
+        List<AccountEntity> data = null;
+        String msg;
+
+        try {
+            data = service.findByCustomerId(id);
+            msg = "It found " + data.size() + " accounts.";
+
+            response.setMessage(msg);
+            response.setSuccess(true);
+            response.setData(data);
+            status = HttpStatus.OK;
+
+        } catch (Exception e) {
+
+            msg = "Something has failed. Please contact support.";
+
+            response.setMessage(msg);
+            response.setSuccess(false);
+            status = HttpStatus.INTERNAL_SERVER_ERROR;
+
+            String log = "End point GET/customers has failed. " + e.getLocalizedMessage();
+            logger.error(log);
+        }
+
+        return new ResponseEntity<>(response, status);
+    }
+
 
 }

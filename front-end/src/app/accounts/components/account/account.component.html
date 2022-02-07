@@ -1,0 +1,32 @@
+<div class="col-11 shadow-lg p-3 mb-5 bg-body rounded">
+    <p class="display-5">Accounts</p>
+    <div class="container">
+        <div class="card">
+            <table class="table table-hover">
+                <thead class="card-header">
+                    <tr>
+                        <th>Number</th>
+                        <th>Type of account</th>
+                        <th>State<br/><button class="btn btn-outline-danger"  type="button">DELETE</button><button class="btn btn-outline-danger"  type="button">DELETE</button></th>
+                        <th>Balance</th>
+                        <th><button class="btn btn-outline-success" (click)="create()" type="button" >CREATE</button>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let account of accounts">
+                        <td>{{account.accountNum}}</td>
+                        <td>{{account.accountType |uppercase }}</td>
+                        <td>{{account.state |uppercase}}</td>
+                        <td>{{account.balance}}</td>
+                        <td><button class="btn btn-outline-danger" (click)="delete(account.accountNum)" type="button">DELETE</button></td>
+                        <!--<td>{{customer.tocustomer| currency:'USD'}}</td>
+                                    <td>{{customer.initDate | date:'yyyy-MM-dd HH:mm:ss-SS'}}</td>
+                                <td>{{customer.balance| currency:'USD'}}</td>-->
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

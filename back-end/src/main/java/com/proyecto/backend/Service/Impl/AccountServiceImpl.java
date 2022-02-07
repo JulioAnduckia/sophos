@@ -34,8 +34,8 @@ public class AccountServiceImpl implements IAccountService {
     }
 
     @Override
-    public boolean delete(String number) throws Exception {
-        data.deleteById(number);
+    public boolean delete(Integer accountNum) throws Exception {
+        data.deleteById(accountNum);
         return true;
     }
 
@@ -59,6 +59,11 @@ public class AccountServiceImpl implements IAccountService {
     @Override
     public Optional<AccountEntity> findByAccountTypeAndCustomer(String accountType, CustomerEntity customer) {
         return data.findByAccountTypeAndCustomer(accountType, customer);
+    }
+
+    @Override
+    public List<AccountEntity> findByCustomerId(int id) throws Exception {
+        return data.findByCustomerId(id);
     }
 
     

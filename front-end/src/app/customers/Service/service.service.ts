@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import{ HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { AccountDto } from '../../Model/Account';
-import { Transfer } from '../../Model/Transfer';
-import { CustomerDto } from 'src/app/Model/CustomerDto';
+import { AccountDto } from '../../accounts/models/accountDto';
+import { CustomerDto } from 'src/app/customers/models/CustomerDto';
 import { GeneralResponse } from 'src/app/shared/Models/general-response';
 
 @Injectable({
@@ -21,10 +20,17 @@ getCustomers():Observable<GeneralResponse<CustomerDto[]>>{
 getOneCustomer(id : number):Observable<GeneralResponse<CustomerDto>>{
   return this.http.get<GeneralResponse<CustomerDto>>(`http://localhost:8080/customers/${id}`);
 }
-//----------
-getall(num_documento:String | null):Observable<Transfer[]>{
-  return this.http.get<Transfer[]>(`http://localhost:8080/transfers/${num_documento}`);
+updateCustomer(customer: CustomerDto):Observable<GeneralResponse<CustomerDto>>{
+  return this.http.put<GeneralResponse<CustomerDto>>(this.Url, customer);
 }
+saveCustomer(customer: CustomerDto):Observable<GeneralResponse<CustomerDto>>{
+  return this.http.post<GeneralResponse<CustomerDto>>(this.Url, customer);
+}
+deleteCustomer(id: number):Observable<GeneralResponse<boolean>>{
+  return this.http.delete<GeneralResponse<boolean>>(`http://localhost:8080/customers/delete/${id}`);
+}
+//----------
+
 getone(num_documento:String | null):Observable<AccountDto>{
   return this.http.get<AccountDto>(`http://localhost:8080/accounts/${num_documento}`);
 }

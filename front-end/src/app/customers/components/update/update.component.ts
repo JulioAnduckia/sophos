@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { CustomerDto } from 'src/app/Model/CustomerDto';
+import { CustomerDto } from 'src/app/customers/models/CustomerDto';
 import { GeneralResponse } from 'src/app/shared/Models/general-response';
 import Swal from 'sweetalert2';
-import { ServiceService } from '../../Service/service.service';
+import { ServiceService } from '../../service/service.service';
 
 
 @Component({
@@ -44,7 +44,7 @@ export class UpdateComponent {
   }
 
   update(){
-    this.service.register(this.customer).subscribe(data => { 
+    this.service.updateCustomer(this.customer).subscribe(data => { 
 
       this.generalResponseC = data;
       

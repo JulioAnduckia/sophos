@@ -1,9 +1,9 @@
 
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CustomerDto  } from 'src/app/Model/CustomerDto';
-import { ServiceService } from 'src/app/customers/Service/service.service';
-import { AccountDto } from 'src/app/Model/Account';
+import { CustomerDto  } from 'src/app/customers/models/CustomerDto';
+import { ServiceService } from 'src/app/customers/service/service.service';
+import { AccountDto } from 'src/app/accounts/models/accountDto';
 import Swal from 'sweetalert2';
 import { GeneralResponse } from '../Models/general-response';
 

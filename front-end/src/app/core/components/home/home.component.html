@@ -1,0 +1,18 @@
+
+<div class="container-fluid">
+
+    <div *ngIf="isLogged">
+      <span>Usuario conectado: {{ globalService.user.firstName}}</span>
+      <a mat-button class="button-bar" (click)="signOut()">Cerrar sesión </a>
+      <a mat-button class="button-bar" (click)="updateUser()" >Actualizar </a>
+    </div>
+
+
+  <div *ngIf="isLogged; else isNotLogged">
+    <app-user></app-user>
+  </div>
+
+  <ng-template #isNotLogged>
+    <app-login (login)="authenticated($event)"></app-login>
+  </ng-template>
+</div>
